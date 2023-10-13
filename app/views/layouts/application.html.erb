@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Portfolio</title>
+    <title>Honde、Donaiyanen。</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,6 +12,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="border-bottom p-2">
+      <%= render 'layouts/header' %>
+    </header>
+
+    <div class="container-fluid bg01">
+      <%= yield %>
+    </div>
+
+    <footer class="row justify-content-center border-top my-2 py-2">
+      <%= render 'layouts/footer' %>
+    </footer>
+
   </body>
 </html>
