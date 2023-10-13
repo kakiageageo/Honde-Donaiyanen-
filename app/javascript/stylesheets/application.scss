@@ -1,1 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap');
+
+body {
+  font-family: 'Zen Antique', serif;
+}
+
+.bg01 {
+  background-image: url(../images/bg03.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  
+} 
