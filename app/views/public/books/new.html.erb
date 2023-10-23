@@ -1,0 +1,33 @@
+<div class="container-fluid bg01">
+  <div class="row justify-content-center mt-3 mb-5">
+
+    <h4>新規投稿</h4>
+
+  </div>
+
+  <%# 投稿フォーム %>
+  <%= form_with model: @book, url: books_path, method: :post do |f| %>
+
+    <div class="row justify-content-center mb-4">
+      <%= f.label :title, "タイトル:", class: "mr-3" %>
+      <%= f.text_field :title, class: "col-4" %>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+      <%= f.label :explanation, "　　概要:", class: "mr-3" %><br>
+      <%= f.text_area :explanation, size: "20x4", class: "col-4" %>
+    </div>
+    
+    <div class="row justify-content-center mb-4">
+      <%= f.label :name, "ジャンル:", class: "mr-3" %><br>
+      <%= f.text_field :name, placeholder: "複数指定する場合は , で区切ってください", class: "col-4" %>
+    </div>
+    
+
+    <div class="row justify-content-center mb-4">
+      <%= f.submit "　登　録　", class: "btn btn-primary"%>
+    </div>
+
+  <% end %>
+  
+</div>
