@@ -1,0 +1,27 @@
+<div class="container">
+    <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>概要</th>
+        <th>ジャンル</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% genres.each do |genre| %>
+      <tr>
+
+          <td><%= genre.title %></td>
+          <td><%= genre.explanation %></td>
+          <td>
+            <% genre.each do |janru| %>
+              <%= link_to janru.name, book_genre_search_path(word: janru.name), class: "btn btn-light mx-auto" %>
+            <% end %>
+          </td>
+
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>

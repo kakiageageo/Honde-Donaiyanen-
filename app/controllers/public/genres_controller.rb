@@ -1,11 +1,15 @@
 class Public::GenresController < ApplicationController
-  
+
+  def index
+    @genres = Genre.all
+  end
+
   def show
     @book = Book.find(params[:id])
     @genre = Genre.new
   end
-  
+
   def create
-    
+
   end
 end

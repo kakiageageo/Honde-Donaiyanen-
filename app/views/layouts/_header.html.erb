@@ -7,6 +7,7 @@
       <% if user_signed_in? %>
       
         <%= link_to "投稿する", new_book_path, class: "btn btn-light mr-3" %>
+        <%= link_to "ジャンル一覧", genres_path, class: "btn btn-light mr-3" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light mr-3" %>
         
       <% else %>

@@ -14,9 +14,11 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users
+    get "/book_genre_search", to: "searches#book_genre_search"
     resources :books
+    get "/genre_search", to: "searches#genre_search"
+    resources :genres
   end
-
 
 
   # 管理者用
