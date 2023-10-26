@@ -25,7 +25,6 @@ class Public::BooksController < ApplicationController
   end
 
   def show
-    @genres = @book.genres
   end
 
   def edit
@@ -42,7 +41,17 @@ class Public::BooksController < ApplicationController
     end
   end
 
- 
+
+  def destroy
+    @book.destroy
+    
+    if admin_signed_in?
+      redirect_to admin_user_path(@book.user_id)
+    else
+      redirect_to books_path
+    end
+  end
+
 
 
   private
