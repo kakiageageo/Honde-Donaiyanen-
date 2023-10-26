@@ -1,9 +1,30 @@
-<div class="container">
+<div class="col-6 offset-3 pt-3">
   
-  <h1>おい</h1>
-
-  <div>
-    <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class: "btn", method: :post %>
+  <div class="row mb-5">
+    <h2>ようこそ、Honma、Donaiyanen。へ</h2>
   </div>
-
+  
+  <div class="row mb-5">
+    <div class="col border-bottom border-dark">
+      Honde、Donaiyanen。てなんやねん。
+      <%= link_to home_about_path do %>
+        <i class="fa-solid fa-square-up-right"></i>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col border-bottom border-dark">
+      ゲストログイン(閲覧用)
+      <%= link_to users_guest_sign_in_path, method: :post do %>
+        <i class="fa-solid fa-square-up-right"></i>
+      <% end %>
+    </div>
+  </div>
+  
+  
 </div>
+
+
+
+  

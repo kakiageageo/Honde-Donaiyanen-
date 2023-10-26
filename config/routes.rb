@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'books/index'
-  end
+ 
   root to: "public/homes#top"
+  get 'home/about' => 'public/homes#about'
 
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
