@@ -3,9 +3,9 @@ class Public::BooksController < ApplicationController
 
   def index
     @books = Book.all
-    
+
   end
-  
+
   def new
     @book = BooksGenre.new
   end
@@ -41,6 +41,8 @@ class Public::BooksController < ApplicationController
       render :edit
     end
   end
+
+ 
 
 
   private

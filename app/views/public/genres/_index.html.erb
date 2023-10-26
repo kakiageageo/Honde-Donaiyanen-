@@ -3,7 +3,7 @@
     <% genres.each do |genre| %>
       <div class="col-3 mb-4">
 
-        <%= link_to genre.name, book_genre_search_path(word: genre.name), class: "btn btn-light mx-auto" %>
+        <%= link_to genre.name, books_genre_search_path(word: genre.name), class: "btn btn-light mx-auto" %>
 
       </div>
     <% end %>

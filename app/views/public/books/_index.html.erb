@@ -1,27 +1,25 @@
 <div class="container">
-    <table class="table">
+  <table class="table border-bottom">
     <thead>
       <tr>
-        <th>タイトル</th>
-        <th>概要</th>
-        <th>ジャンル</th>
+        <th style="width: 30%">　タイトル</th>
+        <th style="width: 70%">ジャンル</th>
       </tr>
     </thead>
 
     <tbody>
       <% books.each do |book| %>
-      <tr>
 
+        <tr>
           <td><%= book.title %></td>
-          <td><%= book.explanation %></td>
           <td>
             <% book.genres.each do |genre| %>
-              <%= link_to genre.name, book_genre_search_path(word: genre.name), class: "btn btn-light mx-auto" %>
+              <%= link_to genre.name, books_genre_search_path(word: genre.name), class: "btn-sm btn-light mr-2" %>
             <% end %>
           </td>
+        </tr>
 
-      </tr>
       <% end %>
-      </tbody>
-    </table>
-  </div>
+    </tbody>
+  </table>
+</div>
