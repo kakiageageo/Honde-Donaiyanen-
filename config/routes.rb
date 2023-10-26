@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'books/index'
+  end
   root to: "public/homes#top"
 
   devise_for :users,skip: [:passwords], controllers: {
@@ -15,6 +18,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users
     resources :books
+    resources :genres
   end
 
 
@@ -24,5 +28,13 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+
+  get 'admin/home' => 'admin/homes#top'
+
+  namespace :admin do
+    resources :users, only: [:index, :show, :destroy]
+    resources :books, only: [:index, :show, :destroy]
+    resources :genres, only: [:index, :show, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

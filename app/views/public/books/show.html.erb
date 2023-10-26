@@ -1,10 +1,13 @@
-<div class="container">
-  <div class="row">
-
-<%= @book.title %>
-<%= @book.explanation %>
-<% @genres.each do |genre| %>
-  <%= genre.name %>
-<% end %>
+<div class="container-fluid vh-95 bg01">
+  <div class="row justify-content-center my-4">
+    <h5><%= book.title %></h5>
   </div>
+  
+  <div class="row justify-content-center">
+    作品概要
+    <div class="container">
+      <%= book.explanation %>
+    </div>
+  </div>
+  
 </div>
