@@ -3,9 +3,9 @@ class Public::BooksController < ApplicationController
 
   def index
     @books = Book.all
-    
+
   end
-  
+
   def new
     @book = BooksGenre.new
   end
@@ -25,7 +25,6 @@ class Public::BooksController < ApplicationController
   end
 
   def show
-    @genres = @book.genres
   end
 
   def edit
@@ -39,6 +38,16 @@ class Public::BooksController < ApplicationController
       redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @book.destroy
+    
+    if admin_signed_in?
+      redirect_to admin_user_path(@book.user_id)
+    else
+      redirect_to books_path
     end
   end
 
