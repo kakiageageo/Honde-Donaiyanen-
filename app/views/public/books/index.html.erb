@@ -1,18 +1,16 @@
-
-<div class="row my-3">
-  <h4>投稿一覧</h4>
+<div class="row justify-content-center py-4">
+  <div class="col-8 offset-4">
+    <h4>投稿一覧</h4>
+  </div>
 </div>
 
-<div>
-  <% @books.each do |book| %>
+<div class="row">
+  <div class="col-3 mt-1">
+    <%# ジャンル検索バー %>
+    <%= render 'public/searches/search_bar' %>
+  </div>
 
-    <%= book.title %>
-    <%= book.explanation %>
-    <% book.genres.each do |genre| %>
-
-      <%= genre.name %>
-
-    <% end %>
-
-  <% end %>
+  <div class="col-8">
+    <%= render 'index', books: @books %>
+  </div>
 </div>
