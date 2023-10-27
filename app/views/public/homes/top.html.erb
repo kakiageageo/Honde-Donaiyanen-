@@ -7,19 +7,17 @@
 
   <div class="bigmargintop">
     <div class="row mb-5">
-      <h5><u>Honde、Donaiyanen。とは</u>　</h5>
-
-      <%= link_to home_about_path do %>
-        <i class="fa-solid fa-square-up-right"></i>
+      <%= link_to home_about_path, class: "btn" do %>
+        <h5><u>Honde、Donaiyanen。とは</u>
+        <i class="fa-solid fa-square-up-right" style="color: skyblue;"></i></h5>
       <% end %>
     </div>
 
 
     <div class="row margintop">
-      <h5><u>ゲストログイン(閲覧用)</u>　</h5>
-
-      <%= link_to users_guest_sign_in_path, method: :post do %>
-        <i class="fa-solid fa-square-up-right"></i>
+      <%= link_to users_guest_sign_in_path, method: :post, class: "btn" do %>
+        <h5><u>ゲストログイン(閲覧用)</u>
+        <i class="fa-solid fa-square-up-right" style="color: skyblue;"></i></h5>
       <% end %>
     </div>
   </div>
