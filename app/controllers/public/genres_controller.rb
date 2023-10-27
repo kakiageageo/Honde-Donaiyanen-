@@ -1,9 +1,14 @@
 class Public::GenresController < ApplicationController
-  
+
+  def index
+    @genres = Genre.all
+  end
+
   def show
     @book = Book.find(params[:id])
     @genre = Genre.new
   end
+
   
   def destroy
     genre = Genre.find(params[:id])
@@ -16,6 +21,7 @@ class Public::GenresController < ApplicationController
     else
       redirect_to book_path(genre.book_id)
     end
+
   end
   
 end

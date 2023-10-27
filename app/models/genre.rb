@@ -11,6 +11,7 @@ class Genre < ApplicationRecord
 
   validates :name, uniqueness: true
 
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
@@ -18,5 +19,6 @@ class Genre < ApplicationRecord
   def disliked_by?(user)
     dislikes.exists?(user_id: user.id)
   end
+
 
 end

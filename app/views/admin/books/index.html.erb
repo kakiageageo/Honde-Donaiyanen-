@@ -5,7 +5,10 @@
     <% @books.each do |book| %>
       <div class="row border-bottom mt-5 mb-3">
       
-        <%= book.title %>
+        <%= book.title %>　｜
+        <% book.genres.each do |genre| %>
+          　<%= genre.name %>
+        <% end %>
         <%= link_to "　削除　", admin_book_path(book.id), method: :delete, class: "btn btn-danger ml-auto mr-3 mb-2" %>
         
       </div>

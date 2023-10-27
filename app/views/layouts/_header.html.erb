@@ -1,10 +1,10 @@
   <div class="row">
-    
+
     <% if admin_signed_in? %>
       <%= link_to admin_home_path, class: "btn" do %>
         <h4>Honde、Donaiyanen。</h4>
       <% end %>
-      
+
     <% else %>
       <%= link_to root_path, class: "btn" do %>
         <h4>Honde、Donaiyanen。</h4>
@@ -12,11 +12,14 @@
     <% end %>
 
     <div class="ml-auto">
-      
-      <%= link_to "HonDonaとは", home_about_path, class: "btn mr-3" %>
+
+
       <% if user_signed_in? %>
 
-        
+        <%= link_to current_user.name, user_path(current_user.id) %>さん
+        <%= link_to "投稿する", new_book_path, class: "btn btn-light mx-3" %>
+        <%= link_to "投稿一覧", books_path, class: "btn btn-light mr-3" %>
+        <%= link_to "ジャンル一覧", genres_path, class: "btn btn-light mr-3" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light mr-3" %>
 
       <% elsif admin_signed_in? %>
@@ -26,6 +29,7 @@
 
       <% else %>
 
+        <%= link_to "HonDonaとは", home_about_path, class: "btn mr-3" %>
         <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light mr-3" %>
         <%= link_to "ログイン", new_user_session_path, class: "btn btn-light mr-3" %>
 

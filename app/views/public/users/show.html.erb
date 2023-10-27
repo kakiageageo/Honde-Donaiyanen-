@@ -1,1 +1,8 @@
-<h1>おい</h1>
+<div class="col-6 offset-3 pt-5">
+  <h4><%= @user.name %>さんの詳細</h4>
+  
+  <div class="conntainer mt-5">
+    <%= render 'public/books/index', books: @books %>
+  </div>
+  
+</div>

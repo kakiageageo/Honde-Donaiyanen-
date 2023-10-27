@@ -25,6 +25,7 @@ class Public::BooksController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
@@ -41,6 +42,7 @@ class Public::BooksController < ApplicationController
     end
   end
 
+
   def destroy
     @book.destroy
     
@@ -50,6 +52,7 @@ class Public::BooksController < ApplicationController
       redirect_to books_path
     end
   end
+
 
 
   private

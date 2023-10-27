@@ -1,0 +1,21 @@
+<div class="row margintop">
+    <div class="col-3">
+      <%# ジャンル検索バー %>
+      <%= render 'public/searches/search_bar' %>
+    </div>
+  
+    <div class="col-8">
+      
+      <div class="container">
+        <div class="row">
+          <% genres.each do |genre| %>
+          
+            <div class="col-3 mb-5">
+              <%= link_to genre.name, books_genre_search_path(word: genre.name), class: "btn btn-secondary mx-auto" %>
+            </div>
+            
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,10 @@
+<div class="container-fluid vh-100 bg01">
+  <div class="row justify-content-center py-4">
+        <div class="col-8 offset-4">
+          <h5>ジャンル "<%= @name %>" を持つ投稿一覧</h5>
+        </div>
+  </div>
+
+  <%= render 'public/books/template', books: @books %>
+
+</div>
