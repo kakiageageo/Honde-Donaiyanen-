@@ -1,10 +1,10 @@
 <% if genre.favorited_by?(current_user) %>
-  <%= link_to book_favorites_path(genre), method: :delete do %>
+  <%= link_to book_favorites_path(genre), method: :delete, remote: true do %>
     <i class="fa-solid fa-heart" aria-hidden="true" style="color: red;"></i>
     <%= genre.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to book_favorites_path(genre), method: :post do %>
+  <%= link_to book_favorites_path(genre), method: :post, remote: true do %>
     <i class="fa-regular fa-heart" aria-hidden="true"></i>
     <%= genre.favorites.count %>
   <% end %>

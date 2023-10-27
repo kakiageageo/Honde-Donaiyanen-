@@ -15,17 +15,13 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-
+    get "books/genre_search", to: "searches#book_genre_search"
+    get "genres/search", to: "searches#genre_search"
     resources :users
     resources :books do
       resource :favorites, only: [:create, :destroy]
       resource :dislikes, only: [:create, :destroy]
     end
-
-    get "books/genre_search", to: "searches#book_genre_search"
-    get "genres/search", to: "searches#genre_search"
-    
-
     resources :genres
   end
 
