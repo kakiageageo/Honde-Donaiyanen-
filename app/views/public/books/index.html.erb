@@ -1,16 +1,7 @@
-<div class="row justify-content-center py-4">
+<div class="row justify-content-center pt-5">
   <div class="col-8 offset-4">
-    <h4>投稿一覧</h4>
+    <h4>みんなの投稿一覧</h4>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-3 mt-1">
-    <%# ジャンル検索バー %>
-    <%= render 'public/searches/search_bar' %>
-  </div>
-
-  <div class="col-8">
-    <%= render 'index', books: @books %>
-  </div>
-</div>
+<%= render 'template', books: @books %>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get "books/genre_search", to: "searches#book_genre_search"
     get "genres/search", to: "searches#genre_search"
     
-    resources :users
+    resources :users, only: [:show]
     resources :books
     resources :genres
   end

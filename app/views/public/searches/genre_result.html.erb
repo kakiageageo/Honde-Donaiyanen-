@@ -1,13 +1,7 @@
-<div class="container-fluid vh-100 bg01">
-  <div class="row justify-content-center py-4">
-        <div class="col-8 offset-4">
-          <h5>"<%= @name %>" を含むジャンル一覧</h5>
-        </div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <%= render 'public/genres/index', genres: @genres %>
-    </div>
+<div class="row pt-5">
+  <div class="col-6 offset-4">
+    <h5>"<%= @name %>" を含むジャンル一覧</h5>
   </div>
 </div>
+
+<%= render 'public/genres/template', genres: @genres %>

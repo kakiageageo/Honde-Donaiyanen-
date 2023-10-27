@@ -7,7 +7,7 @@ class Public::SearchesController < ApplicationController
     render 'genre_result'
   end
   
-  #ジャンル名から本を検索
+  #ジャンル名ボタンを押すと本を検索
    def book_genre_search
     @name = params[:word]
     genres = Genre.where("name LIKE?",@name)

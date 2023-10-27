@@ -1,5 +1,4 @@
-<div class="container-fluid bg01">
-  <div class="row justify-content-center mt-3 mb-5">
+  <div class="row justify-content-center pt-5 mb-5">
 
     <h4>新規投稿</h4>
 
@@ -14,20 +13,23 @@
     </div>
 
     <div class="row justify-content-center mb-4">
-      <%= f.label :explanation, "　　概要:", class: "mr-3" %><br>
-      <%= f.text_area :explanation, size: "20x4", class: "col-4" %>
+      <%= f.label :explanation, "　　概要:", class: "mr-3" %>
+      <%= f.text_area :explanation, placeholder: "空白でも可", size: "20x4", class: "col-4" %>
     </div>
-    
+
     <div class="row justify-content-center mb-4">
-      <%= f.label :name, "ジャンル:", class: "mr-3" %><br>
-      <%= f.text_field :name, placeholder: "複数指定する場合は , で区切ってください", class: "col-4" %>
+      <%= f.label :name, "ジャンル:", class: "mr-3" %>
+      <%= f.text_field :name, placeholder: "", class: "col-4" %>
+
+      <%# フォームを追加するボタンを作り一度に複数のジャンルをつけられるようにする %>
+
     </div>
-    
+
 
     <div class="row justify-content-center mb-4">
       <%= f.submit "　登　録　", class: "btn btn-primary"%>
     </div>
 
   <% end %>
-  
+
 </div>
