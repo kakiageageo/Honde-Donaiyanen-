@@ -1,10 +1,16 @@
 class User < ApplicationRecord
   has_many :books
+
+  has_many :favorites, dependent: :destroy
+  has_many :genres, through: :favorites
+
+  has_many :dislikes, dependent: :destroy
+  has_many :genres, through: :dislikes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -13,5 +19,5 @@ class User < ApplicationRecord
       user.name = "guest"
     end
   end
-  
+
 end
