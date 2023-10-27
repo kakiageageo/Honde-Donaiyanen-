@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- 
+
   root to: "public/homes#top"
   get 'home/about' => 'public/homes#about'
 
@@ -16,7 +16,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users
-    resources :books
+    resources :books do
+      resource :favorites, only: [:create, :destroy]
+      resource :dislikes, only: [:create, :destroy]
+    end
     resources :genres
   end
 
