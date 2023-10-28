@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+
   root to: "public/homes#top"
+  get 'home/about' => 'public/homes#about'
 
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -13,10 +15,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :users
-    resources :books
+    get "books/genre_search", to: "searches#book_genre_search"
+    get "genres/search", to: "searches#genre_search"
+    resources :users, only: [:show]
+    resources :books do
+      resource :favorites, only: [:create, :destroy]
+      resource :dislikes, only: [:create, :destroy]
+    end
+    resources :genres
   end
-
 
 
   # 管理者用
@@ -24,5 +31,13 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+
+  get 'admin/home' => 'admin/homes#top'
+
+  namespace :admin do
+    resources :users, only: [:index, :show, :destroy]
+    resources :books, only: [:index, :destroy]
+    resources :genres, only: [:index, :show, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_15_125153) do
+ActiveRecord::Schema.define(version: 2023_10_27_064347) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2023_10_15_125153) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -25,8 +26,8 @@ ActiveRecord::Schema.define(version: 2023_10_15_125153) do
   end
 
   create_table "book_genres", id: false, force: :cascade do |t|
-    t.integer "book_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "book_id"
+    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id", "genre_id"], name: "index_book_genres_on_book_id_and_genre_id", unique: true
@@ -41,6 +42,24 @@ ActiveRecord::Schema.define(version: 2023_10_15_125153) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "dislikes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "genre_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_dislikes_on_genre_id"
+    t.index ["user_id"], name: "index_dislikes_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "genre_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_favorites_on_genre_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -63,6 +82,11 @@ ActiveRecord::Schema.define(version: 2023_10_15_125153) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "book_genres", "books"
   add_foreign_key "book_genres", "genres"
   add_foreign_key "books", "users"
+  add_foreign_key "dislikes", "genres"
+  add_foreign_key "dislikes", "users"
+  add_foreign_key "favorites", "genres"
+  add_foreign_key "favorites", "users"
 end

@@ -1,0 +1,15 @@
+<div class="container rounded border border-dark bg-light">
+
+  ジャンル検索
+  <div class="row mx-2 mt-2 mb-3">
+
+    <%= form_with url: genres_search_path, method: :get, local: true do |f| %>
+      <div class="form-inline">
+
+        <%= f.text_field :word, class: "form-control form-control-sm mr-3" %>
+        <%= f.submit '検索', class: "btn-sm btn-primary" %>
+
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,19 +1,42 @@
   <div class="row">
-    <%= link_to root_path, class: "btn" do %>
-      <h4>Honde、Donaiyanen。</h4>
+
+    <% if admin_signed_in? %>
+      <%= link_to admin_home_path, class: "btn ml-2" do %>
+        <h4 class="fontcolor">Honde、Donaiyanen。</h4>
+      <% end %>
+
+    <% else %>
+      <%= link_to root_path, class: "btn ml-2" do %>
+        <h4 class="fontcolor">Honde、Donaiyanen。</h4>
+      <% end %>
     <% end %>
 
-    <div class="ml-auto">
+    <div class="ml-auto mt-1">
+
+
       <% if user_signed_in? %>
-      
-        <%= link_to "投稿する", new_book_path, class: "btn btn-light mr-3" %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light mr-3" %>
-        
+
+        <%= link_to user_path(current_user.id), class: "btn fontcolor mr-2" do %>
+          <%= current_user.name %><i class="fa-solid fa-circle-user ml-1"></i>
+        <% end %>
+        <%= link_to "投稿する", new_book_path, class: "btn fontcolor mr-2" %>
+        <%= link_to "投稿一覧", books_path, class: "btn fontcolor mr-2" %>
+        <%= link_to "ジャンル一覧", genres_path, class: "btn fontcolor mr-2" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn fontcolor mr-2" %>
+
+      <% elsif admin_signed_in? %>
+
+        <div class="row fontcolor">
+          <div class="mt-1">管理者でログイン中</div>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn fontcolor mx-2" %>
+        </div>
+
       <% else %>
-      
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light mr-3" %>
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-light mr-3" %>
-        
+
+        <%= link_to "HonDonaとは", home_about_path, class: "btn mr-2 fontcolor" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn fontcolor mr-2" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn fontcolor mr-2" %>
+
       <% end %>
     </div>
 

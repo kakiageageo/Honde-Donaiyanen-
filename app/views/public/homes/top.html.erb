@@ -1,9 +1,29 @@
-<div class="container">
-  
-  <h1>おい</h1>
+<div class="fs-6 flashm"><%= flash[:notice] %></div>
 
-  <div>
-    <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class: "btn", method: :post %>
+<div class="col-6 offset-3 ptop">
+  <h2>ようこそ、Honde、Donaiyanen。へ</h2>
+</div>
+
+<div class="row bigmargintop">
+
+  <div class="col-3 mr-2">
+    <%= render 'public/searches/search_bar' %>
   </div>
 
+  <div class="col-6">
+    <div class="row mb-5">
+      <%= link_to home_about_path, class: "btn" do %>
+        <h5><u>Honde、Donaiyanen。とは</u>
+        <i class="fa-solid fa-square-up-right" style="color: skyblue;"></i></h5>
+      <% end %>
+    </div>
+
+
+    <div class="row margintop">
+      <%= link_to users_guest_sign_in_path, method: :post, class: "btn" do %>
+        <h5><u>ゲストログイン(閲覧用)</u>
+        <i class="fa-solid fa-square-up-right" style="color: skyblue;"></i></h5>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,1 +1,7 @@
-<h1>おい</h1>
+<div class="col-8 offset-3 pt-5">
+  <h4><%= @user.name %>さんのマイページ</h4>
+</div>
+
+<div class="container mt-5">
+  <%= render 'public/books/template', books: @books %>
+</div>

@@ -3,7 +3,7 @@ class CreateGenres < ActiveRecord::Migration[6.1]
     create_table :genres do |t|
 
       t.integer :user_id
-      t.string :name, null:false, uniqueness: true
+      t.string :name, null:false
       t.timestamps
     end
   end
