@@ -36,6 +36,8 @@
               
                       
                 <% else %>
+                    <%# 自分の投稿は評価できない %>
+                    <% if @book.user_id != current_user.id %>
                       <%# favあり→fav消すボタンのみ表示 %>
                       <% if genre.favorited_by?(current_user) %>
                           <%= render 'public/favorites/btn', genre: genre %>
@@ -49,6 +51,7 @@
                           <%= render 'public/favorites/btn', genre: genre %>
                           <%= render 'public/dislikes/btn', genre: genre %>
                       <% end %>
+                    <% end%>
                 <% end %>
               
             <% end%>

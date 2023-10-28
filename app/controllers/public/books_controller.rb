@@ -7,7 +7,12 @@ class Public::BooksController < ApplicationController
   end
 
   def new
-    @book = BooksGenre.new
+    if current_user.guest?
+      flash[:notice] = "ログイン後に投稿可能"
+      redirect_to books_path
+    else
+      @book = BooksGenre.new
+    end
   end
 
   def create
@@ -16,12 +21,11 @@ class Public::BooksController < ApplicationController
     @book.create_genres(input_genres)
 
     #エラーの場合newページに戻る
-    if @book.valid?
+    
       @book.save
+      flash[:notice] = "投稿成功"
       redirect_to books_path
-    else
-      render :new
-    end
+    
   end
 
   def show
@@ -44,12 +48,11 @@ class Public::BooksController < ApplicationController
 
 
   def destroy
-    @book.destroy
-    
-    if admin_signed_in?
-      redirect_to admin_user_path(@book.user_id)
-    else
+    if @book.destroy
+      flash[:notice] = "削除完了"
       redirect_to books_path
+    else
+      redirect_to book_path(@book.id)
     end
   end
 

@@ -1,11 +1,16 @@
-<div class="col-6 offset-3 pt-5">
+<div class="fs-6 flashm"><%= flash[:notice] %></div>
 
+<div class="col-6 offset-3 ptop">
+  <h2>ようこそ、Honde、Donaiyanen。へ</h2>
+</div>
 
-  <div class="row">
-    <h2>ようこそ、Honma、Donaiyanen。へ</h2>
+<div class="row bigmargintop">
+
+  <div class="col-3 mr-2">
+    <%= render 'public/searches/search_bar' %>
   </div>
 
-  <div class="bigmargintop">
+  <div class="col-6">
     <div class="row mb-5">
       <%= link_to home_about_path, class: "btn" do %>
         <h5><u>Honde、Donaiyanen。とは</u>
@@ -21,9 +26,4 @@
       <% end %>
     </div>
   </div>
-
-
 </div>
-
-
-

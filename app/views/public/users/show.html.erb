@@ -1,8 +1,7 @@
-<div class="col-6 offset-3 pt-5">
-  <h4><%= @user.name %>さんの詳細</h4>
-  
-  <div class="conntainer mt-5">
-    <%= render 'public/books/index', books: @books %>
-  </div>
-  
+<div class="col-8 offset-3 pt-5">
+  <h4><%= @user.name %>さんのマイページ</h4>
+</div>
+
+<div class="container mt-5">
+  <%= render 'public/books/template', books: @books %>
 </div>
