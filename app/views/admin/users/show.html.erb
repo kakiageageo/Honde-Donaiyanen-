@@ -8,7 +8,7 @@
 
       <%# ユーザーのアカウントを削除する %>
       <div class="col-4 ml-auto">
-        <%= link_to "アカウント削除", user_path(@user.id), class: "btn btn-danger mb-2" %>
+        <%= link_to "アカウント削除", admin_user_path(@user.id), method: :delete, class: "btn btn-danger mb-2" %>
       </div>
     </div>
 

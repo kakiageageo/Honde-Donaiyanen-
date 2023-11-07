@@ -1,15 +1,15 @@
 <div class="row pt-5">
   <div class="col-6 offset-3">
-    
-    <%= flash[:notice] %>
+
+
     <h4>ジャンル一覧</h4>
-    
+
     <% @genres.each do |genre| %>
       <div class="row border-bottom mt-5 mb-3">
-      
+
         <%= genre.name %>
         <%= link_to "　削除　", admin_genre_path(genre.id), method: :delete, class: "btn btn-danger ml-auto mr-3 mb-2" %>
-        
+
       </div>
     <% end %>
   </div>

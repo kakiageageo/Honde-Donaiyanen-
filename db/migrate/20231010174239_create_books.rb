@@ -7,5 +7,6 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.text :explanation
       t.timestamps
     end
+
   end
 end

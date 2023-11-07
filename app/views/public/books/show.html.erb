@@ -1,6 +1,11 @@
 <div class="row pt-5">
   <div class="col-8 offset-4">
-    <h5><%= @book.title %></h5>
+    <div class="row">
+       <h4><%= @book.title %></h4>
+      
+    </div>
+   
+    
   </div>
 </div>
 
@@ -16,7 +21,11 @@
 
         <tr>
           <td style="width: 20%">作品概要：</td>
-          <td><%= @book.explanation %></td>
+          <td>
+            <%= @book.explanation %><br>
+            本文の感情分析スコア　<%= @book.score %>
+          </td>
+          
         </tr>
 
         <tr>

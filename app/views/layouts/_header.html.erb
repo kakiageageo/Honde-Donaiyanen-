@@ -27,7 +27,7 @@
       <% elsif admin_signed_in? %>
 
         <div class="row fontcolor">
-          <div class="mt-1">管理者でログイン中</div>
+          <div class="align-self-center">管理者でログイン中</div>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn fontcolor mx-2" %>
         </div>
 
