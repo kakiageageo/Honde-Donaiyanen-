@@ -15,9 +15,16 @@ class Public::BooksController < ApplicationController
   end
 
   def create
+    genre_names = params[:genre_name]
     @book = Book.new(book_params)
     @book.score = Language.get_data(book_params[:explanation])
-    if @book.save
+    if @book.save!
+      genre_names.each do |genre_name|
+        if genre_name.present?&&genre_name != ""
+          genre = Genre.find_or_create_by(user_id: current_user, name: genre_name)
+          BookGenre.create(book_id: @book.id, genre_id: genre.id)
+        end
+      end
       flash[:notice] = "投稿成功"
       redirect_to books_path
     else
@@ -34,7 +41,7 @@ class Public::BooksController < ApplicationController
 #  end
 
 #  def update
-#実装予定    
+#実装予定
 #    @form = BooksGenre.new(update_params)
 #    if @form.valid?
 #      @form.update
@@ -59,7 +66,7 @@ class Public::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :explanation, genres_attributes: [:id, :name, :_destroy]).merge(user_id: current_user.id)
+    params.require(:book).permit(:title, :explanation, :genre_name).merge(user_id: current_user.id)
   end
 
   def find_book
