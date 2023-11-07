@@ -18,7 +18,7 @@ class Public::BooksController < ApplicationController
     genre_names = params[:genre_name]
     @book = Book.new(book_params)
     #@book.score = Language.get_data(book_params[:explanation])
-    if @book.save!
+    if @book.save
       genre_names.each do |genre_name|
         if genre_name.present?&&genre_name != ""
           genre = Genre.find_or_create_by(user_id: current_user, name: genre_name)
