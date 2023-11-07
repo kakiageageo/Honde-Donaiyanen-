@@ -1,36 +1,62 @@
   <div class="fs-6 flashm"><%= flash[:notice] %></div>
-  <div class="row justify-content-center pt-5 mb-5">
+  <div class="row justify-content-center pt-5">
 
     <h4>新規投稿</h4>
 
   </div>
 
-  <%# 投稿フォーム %>
-  <%= form_with model: @book, url: books_path, method: :post do |f| %>
 
-    <div class="row justify-content-center mb-4">
-      <%= f.label :title, "タイトル:", class: "mr-3" %>
-      <%= f.text_field :title, class: "col-4" %>
+<%= form_with model: @book do |book| %>
+  <div class="col-8 offset-4 margintop">
+    <div class="col mb-3">
+      <%= book.label :title, 'タイトル' %><br>
+      <%= book.text_field :title, size: 50 %>
+    </div>
+      
+    <div class="col mb-3">
+      <%= book.label :explanation, '作品概要' %><br>
+      <%= book.text_area :explanation, size: "50x5" %><br>
     </div>
 
-    <div class="row justify-content-center mb-4">
-      <%= f.label :explanation, "　　概要:", class: "mr-3" %>
-      <%= f.text_area :explanation, placeholder: "空白でも可", size: "20x4", class: "col-4" %>
+    <div class="col mb-3">
+      <%# トラックの追加フォームをするボタン %>
+      <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
+      <%= book.label :name, "ジャンル" %>
+      <%= link_to_add_association '+',
+                                  # form_withのformタグ変数
+                                  book,
+                                  # フォームのデータを追加するモデル名
+                                  :genres,
+                                  # 追加するフォームの部分テンプレート
+                                  partial: "genre_fields",
+                                  # オプション
+                                  data: {
+                                  # フォームを追加する場所の指定
+                                  association_insertion_node: '#genre-forms',
+                                # フォームを前後どの位置に追加するか。(初期値: before)
+                                association_insertion_method: 'before'
+                              },
+                              # フォームオブジェクトを指定する場合(初期値 : f)
+                              form_name: 'genre',
+                              # 部分テンプレートに渡す変数があれば記述
+                              render_options: {
+                                locals: {
+                                  # 通常の部分テンプレートと同じ記述
+                                }
+                              }, class: "btn btn-info rounded-circle p-0 mb-1", style: "width:25px;height:25px;"
+  %>
+
+      <%# フォームを追加する場所。%>
+      <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
+      <div id="genre-forms" class="mb-2">
+        <%= book.fields_for :genres do |genre| %>
+          <% render 'genre_fields', genre: genre %>
+        <% end %>
+      </div>
     </div>
-
-    <div class="row justify-content-center mb-4">
-      <%= f.label :name, "ジャンル:", class: "mr-3" %>
-      <%= f.text_field :name, placeholder: "", class: "col-4" %>
-
-      <%# フォームを追加するボタンを作り一度に複数のジャンルをつけられるようにする %>
-
-    </div>
-
-
-    <div class="row justify-content-center mb-4">
-      <%= f.submit "　登　録　", class: "btn btn-primary"%>
-    </div>
-
-  <% end %>
-
-</div>
+  </div>
+    
+  <div class="row justify-content-center"> 
+    <%= book.submit "投稿する", class: "btn btn-success" %>
+  </div>  
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_27_064347) do
+ActiveRecord::Schema.define(version: 2023_11_07_063631) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2023_10_27_064347) do
     t.text "explanation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "score", precision: 5, scale: 3
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2023_10_27_064347) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_genres_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,4 +91,5 @@ ActiveRecord::Schema.define(version: 2023_10_27_064347) do
   add_foreign_key "dislikes", "users"
   add_foreign_key "favorites", "genres"
   add_foreign_key "favorites", "users"
+  add_foreign_key "genres", "users"
 end
