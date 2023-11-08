@@ -20,7 +20,7 @@
 
     <div class="col mb-3">
       <%= book.label :genre_name, 'ジャンル' %>
-      <span id="add_genre">+</span>
+      <span id="add_genre" class="btn btn-info rounded-circle p-0 mb-1" style= "width:25px;height:25px;">+</span>
       <br>
       <%= text_field_tag "genre_name", "", {name: "genre_name[]"} %><br>
       <div id="aaa">
