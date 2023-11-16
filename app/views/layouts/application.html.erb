@@ -15,10 +15,15 @@
     <header class="border-bottom border-dark px-3 pt-2 pb-1 bgcolor">
       <%= render 'layouts/header' %>
     </header>
-
+    
+  <%# booksコントローラーはレイアウト別 %>
+  <% if controller_name == "books" %>
+    <%= yield %>
+  <% else %>
     <div class="container-fluid vh-100 bg01">
       <%= yield %>
     </div>
+  <% end %>
 
 
 

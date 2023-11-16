@@ -2,6 +2,7 @@ class Public::BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
 
   def index
+    
     @books = Book.all
   end
 
@@ -34,7 +35,7 @@ class Public::BooksController < ApplicationController
 #  end
 
 #  def update
-#実装予定    
+#実装予定
 #    @form = BooksGenre.new(update_params)
 #    if @form.valid?
 #      @form.update
