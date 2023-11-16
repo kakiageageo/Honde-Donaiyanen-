@@ -1,9 +1,12 @@
 <div class="container-fluid vh-100 bg01">
-  <div class="col-8 offset-4 pt-5">
-        
-     <h4><%= @book.title %></h4>
-    
-  </div>
+  <div class="col-6 offset-4 pt-5">
+    <div class="row">
+      
+      <h4><%= @book.title %></h4>
+      <%= link_to "削除", book_path(@book), method: :delete, class: "btn btn-danger ml-auto mr-3" %>
+      
+    </div> 
+  </div>    
   
   <div class="row margintop">
     <div class="col-3 ml-2 mt-3">

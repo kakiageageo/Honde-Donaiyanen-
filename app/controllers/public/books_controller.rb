@@ -2,8 +2,7 @@ class Public::BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    
-    @books = Book.all
+    @books = Book.all.page(params[:page]).per(10)
   end
 
   def new
@@ -28,6 +27,12 @@ class Public::BooksController < ApplicationController
 
   def show
   end
+  
+  def destroy
+    @book.destroy
+    flash[:notice] = "削除完了"
+    redirect_to books_path
+  end
 
 # def edit
 #実装予定
@@ -44,18 +49,6 @@ class Public::BooksController < ApplicationController
 #      render :edit
 #    end
 #  end
-
-
-  def destroy
-
-#ユーザーは投稿を削除できず、管理者へ削除申請を行う。編集はできる。
-      @book.destroy
-      #flash[:notice] = "削除完了"
-      redirect_to admin_books_path
-
-  end
-
-
 
   private
 
