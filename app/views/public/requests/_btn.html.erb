@@ -1,0 +1,9 @@
+<% if book.requested_by?(current_user) %>
+
+  <%= link_to "申請取消", book_requests_path(book), method: :delete, remote: true, class: "btn-sm btn-danger round" %>
+
+<% else %>
+
+  <%= link_to "削除申請", book_requests_path(book), method: :post, remote: true, class: "btn btn-sm btn-danger round" %>
+
+<% end %>

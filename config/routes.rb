@@ -18,9 +18,10 @@ Rails.application.routes.draw do
     get "books/genre_search", to: "searches#book_genre_search"
     get "genres/search", to: "searches#genre_search"
     resources :users, only: [:show]
-    resources :books do
+    resources :books, only: [:index, :show, :new, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resource :dislikes, only: [:create, :destroy]
+      resource :requests, only: [:create, :destroy]
     end
     resources :genres
   end
