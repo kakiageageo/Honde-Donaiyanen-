@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_16_100419) do
+ActiveRecord::Schema.define(version: 2023_11_16_161359) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -72,12 +72,8 @@ ActiveRecord::Schema.define(version: 2023_11_16_100419) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "books_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["books_id"], name: "index_requests_on_books_id"
-    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,6 +85,7 @@ ActiveRecord::Schema.define(version: 2023_11_16_100419) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -101,6 +98,4 @@ ActiveRecord::Schema.define(version: 2023_11_16_100419) do
   add_foreign_key "favorites", "genres"
   add_foreign_key "favorites", "users"
   add_foreign_key "genres", "users"
-  add_foreign_key "requests", "books", column: "books_id"
-  add_foreign_key "requests", "users"
 end
