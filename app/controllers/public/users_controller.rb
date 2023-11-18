@@ -9,5 +9,13 @@ class Public::UsersController < ApplicationController
     end
   end
   
+  def withdraw
+    @user = User.find(current_user.id)
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "アカウント削除完了"
+    redirect_to root_path
+  end
   
 end

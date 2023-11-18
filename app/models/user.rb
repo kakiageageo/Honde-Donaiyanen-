@@ -7,8 +7,7 @@ class User < ApplicationRecord
   has_many :dislikes, dependent: :destroy
   has_many :genres, through: :dislikes
 
-  has_many :requests, dependent: :destroy
-  has_many :books, through: :requests
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,6 +26,14 @@ class User < ApplicationRecord
 
   def guest?
     email == GUEST_USER_EMAIL
+  end
+
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
+  def inactive_message
+   is_deleted == false ? super : :account_inactive
   end
 
 end
