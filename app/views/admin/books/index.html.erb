@@ -1,17 +1,26 @@
-<div class="row pt-5">
-  <div class="col-6 offset-3">
+<div class="row justify-content-center pt-5 mb-5">
     <h4>投稿一覧</h4>
+</div>
+<div class="col-6 offset-3">
     
-    <% @books.each do |book| %>
-      <div class="row border-bottom mt-5 mb-3">
-      
-        <%= book.title %>　｜
-        <% book.genres.each do |genre| %>
-          　<%= genre.name %>
-        <% end %>
-        <%= link_to "　削除　", admin_book_path(book.id), method: :delete, class: "btn btn-danger ml-auto mr-3 mb-2" %>
+  <% @books.each do |book| %>
+    <div class="row border-bottom mb-3">
+      <%= book.title %>
+      ｜
+      <% book.genres.each do |genre| %>
+        <div class=" btn btn-sm btn-secondary mb-1">
+          <%= genre.name %>
+        </div>
+          
+        <i class="fa-solid fa-heart-crack" style="color: blue;"></i>
+        <%= genre.dislikes.count %>
         
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+      <%= link_to "　削除　", admin_book_path(book), method: :delete, class: "btn btn-sm btn-danger ml-auto mr-3 mb-1" %>
+    </div>
+  <% end %>
+</div>
+  
+<div class="row justify-content-center mb-3">
+  <%= paginate @books %>
 </div>

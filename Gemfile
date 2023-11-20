@@ -58,6 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'kaminari'
 gem "nested_form"
+gem 'cocoon'
 gem 'jquery-rails'
 
 gem 'dotenv-rails'

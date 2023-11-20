@@ -7,9 +7,18 @@ class Admin::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @books = Book.where(user_id: @user).page(params[:page]).per(5)
   end
-
-  def destroy
+  
+  def update
+    @user = User.find(params[:id])
     
+    if @user.is_deleted == false
+      @user.update(is_deleted: true)
+    else
+      @user.update(is_deleted: false)
+    end
+    redirect_to request.referer
   end
+  
 end

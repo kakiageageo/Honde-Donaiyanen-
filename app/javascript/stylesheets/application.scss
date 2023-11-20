@@ -32,6 +32,21 @@ body {
 }
 
 .flashm {
-  margin-left: 270px;
+  text-align:  center; 
+  font-size: 16px;
   color: green;
+}
+
+.errorm {
+  text-align: center;
+  font-size: 16px;
+  color: red;
+}
+
+.ftcolor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #7a6357;
 }

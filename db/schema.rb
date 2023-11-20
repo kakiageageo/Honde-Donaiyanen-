@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_27_064347) do
+ActiveRecord::Schema.define(version: 2023_11_16_161359) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,14 +25,11 @@ ActiveRecord::Schema.define(version: 2023_10_27_064347) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "book_genres", id: false, force: :cascade do |t|
+  create_table "book_genres", force: :cascade do |t|
     t.integer "book_id"
     t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id", "genre_id"], name: "index_book_genres_on_book_id_and_genre_id", unique: true
-    t.index ["book_id"], name: "index_book_genres_on_book_id"
-    t.index ["genre_id"], name: "index_book_genres_on_genre_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -41,6 +38,7 @@ ActiveRecord::Schema.define(version: 2023_10_27_064347) do
     t.text "explanation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "score", precision: 5, scale: 3
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -67,6 +65,12 @@ ActiveRecord::Schema.define(version: 2023_10_27_064347) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_genres_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,15 +82,15 @@ ActiveRecord::Schema.define(version: 2023_10_27_064347) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "book_genres", "books"
-  add_foreign_key "book_genres", "genres"
   add_foreign_key "books", "users"
   add_foreign_key "dislikes", "genres"
   add_foreign_key "dislikes", "users"
   add_foreign_key "favorites", "genres"
   add_foreign_key "favorites", "users"
+  add_foreign_key "genres", "users"
 end
