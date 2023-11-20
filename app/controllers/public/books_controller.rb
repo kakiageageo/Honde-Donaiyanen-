@@ -34,22 +34,6 @@ class Public::BooksController < ApplicationController
     redirect_to books_path
   end
 
-# def edit
-#実装予定
-#    @form = BooksGenre.new(title: @book.title, explanation: @book.explanation)
-#  end
-
-#  def update
-#実装予定
-#    @form = BooksGenre.new(update_params)
-#    if @form.valid?
-#      @form.update
-#      redirect_to root_path
-#    else
-#      render :edit
-#    end
-#  end
-
   private
 
   def book_params

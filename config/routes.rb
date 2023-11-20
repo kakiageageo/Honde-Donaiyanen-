@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     patch "users/withdraw", to: "users#withdraw"
     get "books/genre_search", to: "searches#book_genre_search"
     get "genres/search", to: "searches#genre_search"
-    resources :users, only: [:show]
+    resources :users, only: [:show, :update]
     resources :books, only: [:index, :show, :new, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resource :dislikes, only: [:create, :destroy]
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   get 'admin/home' => 'admin/homes#top'
 
   namespace :admin do
-    resources :users, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :update]
     resources :books, only: [:index, :destroy]
     resources :genres, only: [:index, :show, :destroy]
   end

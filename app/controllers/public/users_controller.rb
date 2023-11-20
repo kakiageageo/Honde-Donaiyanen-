@@ -1,7 +1,14 @@
 class Public::UsersController < ApplicationController
   
+  
   def show
     @user = User.find(params[:id])
+    
+    #他ユーザーのマイページは見れない
+    unless @user.id == current_user.id
+      redirect_to request.referer
+    end
+    
     @books = Book.where(user_id: @user.id)
     if @user.guest?
       flash[:notice] = "ログイン後にマイページ利用可能"
