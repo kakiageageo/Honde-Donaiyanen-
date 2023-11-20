@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     patch "users/withdraw", to: "users#withdraw"
     get "books/genre_search", to: "searches#book_genre_search"
     get "genres/search", to: "searches#genre_search"
-    resources :users, only: [:show, :update]
-    resources :books, only: [:index, :show, :new, :create, :destroy] do
+    resources :users, only: [:show, :edit, :update]
+    resources :books, only: [:index, :show, :new, :create, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resource :dislikes, only: [:create, :destroy]
       resource :requests, only: [:create, :destroy]

@@ -20,7 +20,7 @@
               <td><%= link_to book.title, book_path(book.id) %></td>
               <td>
                 <% book.genres.each do |genre| %>
-                  <%= link_to genre.name, books_genre_search_path(word: genre.name), class: "btn-sm btn-secondary mr-2" %>
+                  <%= link_to genre.name, books_genre_search_path(word: genre.name), class: "btn btn-sm btn-secondary mr-2 mb-1" %>
                 <% end %>
               </td>
             </tr>
