@@ -1,36 +1,34 @@
-<div class="errorm">
-  <% if flash[:alert] %>
-    <%= flash[:alert] %>
-  <% end %>
-</div>
+<div class="container-fluid vh-100 bg01">
+  <div class="row justify-content-center pt-3">
 
-<div class="row justify-content-center pt-5">
+    <h2>管理者ログイン</h2>
 
-  <h2>管理者ログイン</h2>
+  </div>
 
-</div>
-
-<div class="container margintop">
-  <div class="row justify-content-center">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         
-      <%# 名前は固定%>
-      <%= f.hidden_field :name, :value => "admin" %>
+        <%# 名前は固定%>
+        <%= f.hidden_field :name, :value => "admin" %>
 
-      <div class="col my-3">
-        <%= f.label :email, "メールアドレス"  %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %>
-      </div>
 
-      <div class="col mb-4">
-        <%= f.label :password, "パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password", size: 40 %>
-      </div>
 
-      <div class="row">
-        <%= f.submit "　ログイン　", class: "btn btn-success mx-auto" %>
-      </div>
-    <% end %>
+        <div class="col my-3">
+          <%= f.label :email, "メールアドレス"  %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %>
+        </div>
 
+        <div class="col mb-4">
+          <%= f.label :password, "パスワード" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", size: 40 %>
+        </div>
+
+        <div class="row">
+          <%= f.submit "　ログイン　", class: "btn btn-success mx-auto" %>
+        </div>
+      <% end %>
+
+    </div>
   </div>
 </div>

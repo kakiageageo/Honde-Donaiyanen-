@@ -1,18 +1,18 @@
-<div class="flashm"><%= flash[:notice] %></div>
-<div class="errorm"><%= render 'error', book: @book %> </div>
-<div class="row justify-content-center pt-5">
+  <div class="fs-6 flashm"><%= flash[:notice] %></div>
+  <div class="row justify-content-center pt-5">
 
-  <h4>新規投稿</h4>
+    <h4>新規投稿</h4>
 
-</div>
+  </div>
+
 
 <%= form_with model: @book do |book| %>
-  <div class="col-8 offset-4 mt-3">
+  <div class="col-8 offset-4 margintop">
     <div class="col mb-3">
       <%= book.label :title, 'タイトル' %><br>
       <%= book.text_field :title, size: 50 %>
     </div>
-
+      
     <div class="col mb-3">
       <%= book.label :explanation, '作品概要' %><br>
       <%= book.text_area :explanation, placeholder: "空白でも可", size: "50x5" %><br>
@@ -55,8 +55,8 @@
       </div>
     </div>
   </div>
-
-  <div class="row justify-content-center mb-5">
+    
+  <div class="row justify-content-center mb-5"> 
     <%= book.submit "投稿する", class: "btn btn-success" %>
-  </div>
+  </div>  
 <% end %>

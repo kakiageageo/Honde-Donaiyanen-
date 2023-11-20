@@ -6,13 +6,9 @@
         <h4>ユーザー：　<%= @user.name %></h4>
       </div>
 
-      <%# ユーザーの退会ステータスを操作 %>
+      <%# ユーザーのアカウントを削除する %>
       <div class="col-4 ml-auto">
-        <% if @user.is_deleted == false %>
-          <%= link_to "退会させる", admin_user_path(@user), method: :patch, class: "btn btn-danger ml-5 mr-3" %>
-        <% else %>
-          <%= link_to "退会取り消し", admin_user_path(@user), method: :patch, class: "btn btn-success ml-5 mr-3 px-1" %>
-        <% end %>
+        <%= link_to "アカウント削除", admin_user_path(@user.id), method: :delete, class: "btn btn-danger mb-2" %>
       </div>
     </div>
 
@@ -20,22 +16,18 @@
       <h5>投稿一覧</h5>
     </div>
 
-    <% @books.each do |book| %>
+    <% @user.books.each do |book| %>
       <div class="row border-bottom mb-4">
         <div class="col-6">
           <%= book.title %>
         </div>
 
         <div class="col-4">
-          <%= link_to "投稿削除", book_path(book), method: :delete, class: "btn btn-primary mb-2" %>
+          <%= link_to "投稿削除", book_path(book.id), method: :delete, class: "btn btn-primary mb-2" %>
         </div>
 
       </div>
     <% end %>
-    
-    <div class="row justify-content-center mb-3">
-      <%= paginate @books %>
-    </div>
 
 
   </div>

@@ -1,11 +1,8 @@
 <div class="row justify-content-center pt-5">
-  <h4><%= @user.name %></h4>
-    <%= link_to edit_user_path(@user) do %>
-      <i class="fa-solid fa-user-gear"></i>
-    <% end %>
-    <h4>さんのマイページ</h4>
-  
-  <%= link_to "退会する", users_withdraw_path, method: :patch, class: "btn btn-danger ml-5", data: { confirm: "本当に退会しますか？" } %>
+  <h4><%= @user.name %>さんのマイページ</h4>
+  <%= link_to "退会する", users_withdraw_path, method: :patch, class: "btn btn-danger ml-5 mr-3", data: { confirm: "本当に退会しますか？" } %>
 </div>
 
-<%= render 'public/books/template', books: @books %>
+<div class="container mt-5">
+  <%= render 'public/books/template', books: @books %>
+</div>

@@ -1,11 +1,7 @@
 class Admin::GenresController < ApplicationController
   
   def index
-    genres = Genre.all.sort {|x|
-      x.dislikes.size
-    }.reverse
-    
-    @genres = Kaminari.paginate_array(genres).page(params[:page]).per(10)
+    @genres = Genre.all
   end
   
   def destroy
