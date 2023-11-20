@@ -7,6 +7,7 @@ class Book < ApplicationRecord
 
 
   validates :title, presence: true, uniqueness: true
+  #持てるジャンルの数を5個までにしたい(未実装)
   accepts_nested_attributes_for :genres, reject_if: :all_blank, allow_destroy: true
 
   def requested_by?(user)

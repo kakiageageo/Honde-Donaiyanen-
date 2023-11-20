@@ -1,16 +1,22 @@
 <div class="row pt-5">
   <div class="col-6 offset-3">
-
-
-    <h4>ジャンル一覧</h4>
+  
+    <div class="row justify-content-center mb-5">
+      <h4>ジャンル一覧</h4>
+    </div>
 
     <% @genres.each do |genre| %>
-      <div class="row border-bottom mt-5 mb-3">
-
-        <%= genre.name %>
-        <%= link_to "　削除　", admin_genre_path(genre.id), method: :delete, class: "btn btn-danger ml-auto mr-3 mb-2" %>
+      <div class="row border-bottom mb-2">
+        <div class="btn btn-sm btn-secondary mb-1">
+          <%= genre.name %>
+        </div>
+        　dislike：<%= genre.dislikes.count %>
+        <%= link_to "　削除　", admin_genre_path(genre.id), method: :delete, class: "btn btn-sm btn-danger ml-auto mr-3 mb-1" %>
 
       </div>
     <% end %>
   </div>
+</div>
+<div class="row justify-content-center my-2">
+  <%= paginate @genres %>
 </div>
