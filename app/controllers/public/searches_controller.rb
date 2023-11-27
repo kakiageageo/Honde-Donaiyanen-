@@ -1,4 +1,10 @@
 class Public::SearchesController < ApplicationController
+  
+  def book_search
+    @title = params[:word]
+    @books = Book.where("title LIKE?", "%#{@title}%")
+    render 'book_result'
+  end
 
   #ジャンル名からジャンルを検索
   def genre_search
