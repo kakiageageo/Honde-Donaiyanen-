@@ -15,25 +15,35 @@ class Public::BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.score = Language.get_data(book_params[:explanation])
-    if @book.save
-      flash[:notice] = "投稿成功"
-      redirect_to books_path
-    else
+    if current_user.guest?
       render :new
+    else
+      @book = Book.new(book_params)
+      @book.score = Language.get_data(book_params[:explanation])
+
+      if @book.save
+        flash[:notice] = "投稿成功"
+        redirect_to books_path
+      else
+        render :new
+      end
     end
   end
 
   def show
   end
-  
+
   def destroy
-    @book.destroy
-    flash[:notice] = "削除完了"
-    redirect_to books_path
+    if current_user.id == @book.user_id
+      @book.destroy
+      flash[:notice] = "削除完了"
+      redirect_to books_path
+    else
+      @books = Book.all.page(params[:page]).per(10)
+      render 'index'
+    end
   end
-  
+
   def update
     if @book.update(update_params)
       redirect_to book_path(@book)
@@ -41,13 +51,13 @@ class Public::BooksController < ApplicationController
       render :show
     end
   end
-  
+
   private
 
   def book_params
     params.require(:book).permit(:title, :explanation, genres_attributes: [:id, :name, :_destroy]).merge(user_id: current_user.id)
   end
-  
+
   def update_params
     params.require(:book).permit(:title, :explanation, genres_attributes: [:id, :name, :_destroy])
   end
