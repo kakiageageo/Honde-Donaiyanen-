@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
     
     #他ユーザーのマイページは見れない
     unless @user.id == current_user.id
-      redirect_to request.referer
+      redirect_to books_path
     end
     
     @books = Book.where(user_id: @user.id)
@@ -22,8 +22,12 @@ class Public::UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if current_user.id == @user.id
+      @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      redirect_to root_path
+    end
   end
   
   def withdraw
