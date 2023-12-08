@@ -44,22 +44,10 @@ class Public::BooksController < ApplicationController
     end
   end
 
-  def update
-    if @book.update(update_params)
-      redirect_to book_path(@book)
-    else
-      render :show
-    end
-  end
-
   private
 
   def book_params
     params.require(:book).permit(:title, :explanation, genres_attributes: [:id, :name, :_destroy]).merge(user_id: current_user.id)
-  end
-
-  def update_params
-    params.require(:book).permit(:title, :explanation, genres_attributes: [:id, :name, :_destroy])
   end
 
   def find_book

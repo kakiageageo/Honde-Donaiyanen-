@@ -71,14 +71,6 @@
 
           <% end %>
         </div>
-
-
-        <%= form_with model: @book, method: :patch do |f| %>
-          <div class="row my-4">
-            <%= f.text_field :name, size: 30, placeholder: "ジャンル追加機能は今後実装予定" %>
-            <%= f.submit "＋", class: "btn btn-success rounded-circle p-0 ml-2", style: "width:25px;height:25px;" %>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
