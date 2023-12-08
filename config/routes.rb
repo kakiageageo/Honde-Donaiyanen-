@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resource :dislikes, only: [:create, :destroy]
       resource :requests, only: [:create, :destroy]
     end
-    resources :genres
+    resources :genres, only: [:index]
   end
 
 
